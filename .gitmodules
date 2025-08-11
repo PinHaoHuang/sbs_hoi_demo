@@ -1,3 +1,6 @@
 [submodule "third-party/4D-Humans"]
 	path = third-party/4D-Humans
 	url = https://github.com/shubham-goel/4D-Humans.git
+[submodule "third-party/mmpose"]
+	path = third-party/mmpose
+	url = https://github.com/PinHaoHuang/mmpose
