@@ -21,11 +21,9 @@ This should create a conda environment named
 `
 openmmlab
 `
-Next create a directory: 
-`
-mkdir checkpoints
-`
-and download the checkpoint for rtmpose3d: https://download.openmmlab.com/mmpose/v1/wholebody_3d_keypoint/rtmw3d/rtmw3d-l_8xb64_cocktail14-384x288-794dbc78_20240626.pth, and place it in the 
+.
+
+Download the checkpoint for rtmpose3d: https://download.openmmlab.com/mmpose/v1/wholebody_3d_keypoint/rtmw3d/rtmw3d-l_8xb64_cocktail14-384x288-794dbc78_20240626.pth, and place it in the 
 `
 checkpoints/
 `
@@ -53,3 +51,9 @@ videoio
 zmq
 numpy==1.26.4
 ```
+
+Put torque file in 
+`
+data/
+`
+

@@ -19,8 +19,13 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Streamlit App Arguments')
 parser.add_argument('--bar', action="store_true")
+parser.add_argument('--torque_file', required=True, type=str)
 
-st.session_state.args = parser.parse_args()
+args = parser.parse_args()
+
+assert os.path.exists(args.torque_file)
+
+st.session_state.args = args
 
 pwd_dir = os.path.abspath(os.path.join(os.path.dirname(__file__)))
 
@@ -418,33 +423,7 @@ def display_frame(
         
         st.session_state.plot_placeholder_manager['energy']['last_fig'] = energy_fig
 
-        
 
-
-# Function to load video and store initial configurations
-# def load_video(video_file, resize_ratio, custom_fps):
-#     if "video_capture" not in st.session_state:
-#         # Initialize color video capture
-#         cap_color = cv2.VideoCapture(video_file.name)
-#         video_fps = cap_color.get(cv2.CAP_PROP_FPS)
-#         st.session_state.video_capture = cap_color
-#         st.session_state.video_fps = video_fps
-#         st.session_state.total_frames = int(cap_color.get(cv2.CAP_PROP_FRAME_COUNT))
-#         st.session_state.current_frame = 0
-#         st.session_state.is_playing = False
-#         st.session_state.resize_ratio = resize_ratio
-#         st.session_state.custom_fps = custom_fps
-#         st.session_state.skip_factor = max(1, int(video_fps / custom_fps))
-
-#         # Initialize depth reader
-#         depth_file_path = video_file.name.replace('.color.mp4', '.depth-reg.mp4')
-#         st.session_state.depth_reader = Uint16Reader(depth_file_path)
-#         st.session_state.depth_iter = iter(st.session_state.depth_reader)
-
-#     # Adjust skip factor if custom_fps changes
-#     if custom_fps != st.session_state.custom_fps:
-#         st.session_state.custom_fps = custom_fps
-#         st.session_state.skip_factor = max(1, int(st.session_state.video_fps / custom_fps))
 
 def load_video(color_path, depth_path, resize_ratio, custom_fps):
     """
@@ -654,7 +633,7 @@ uploaded_files = st.file_uploader(
 resize_ratio = st.slider("Resize Ratio", min_value=0.1, max_value=1.0, value=0.5)
 custom_fps = st.slider("FPS", min_value=5, max_value=30, value=10)
 
-st.session_state.torque_colors = np.load('data/estimated_torques_30fps_t0003.067_t0039.700.npy', allow_pickle=True).item() 
+st.session_state.torque_colors = np.load(args.torque_file, allow_pickle=True).item() 
 
 
 joint_names = [
