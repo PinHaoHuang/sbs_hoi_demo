@@ -1,7 +1,6 @@
 # sbs_hoi_demo
 
-## Install third_party 
-
+## Setup
 ### 4D-Humans
 
 Navigate to https://github.com/shubham-goel/4D-Humans. Follow their instructions to install the environment.
@@ -22,8 +21,17 @@ This should create a conda environment named
 `
 openmmlab
 `
+Next create a directory: 
+`
+mkdir checkpoints
+`
+and download the checkpoint for rtmpose3d: https://download.openmmlab.com/mmpose/v1/wholebody_3d_keypoint/rtmw3d/rtmw3d-l_8xb64_cocktail14-384x288-794dbc78_20240626.pth, and place it in the 
+`
+checkpoints/
+`
+folder.
 
-## Create your own environment
+### Create your own environment
 
 ```
 conda create -n sbs_hoi_demo python=3.10
