@@ -1,4 +1,5 @@
 # sbs_hoi_demo
+![SBS Thrust 2 -  Human physical state esimation during interaction with objects](assets/demo.png)
 
 ## Setup
 ### 4D-Humans
