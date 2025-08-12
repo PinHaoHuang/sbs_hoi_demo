@@ -52,8 +52,14 @@ zmq
 numpy==1.26.4
 ```
 
-Put torque file in 
+Last, put torque file in 
 `
 data/
 `
+
+## Start Demo
+```
+streamlit run --server.maxUploadSize 1000 demo.py -- --bar --torque_file PATH_TO_TORQUE_FILE
+
+```
 
